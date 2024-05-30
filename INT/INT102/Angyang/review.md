@@ -25,7 +25,7 @@
 ## Bubble Sort
 
 冒泡排序是一种简单的排序算法，其基本思想是通过不断地交换相邻的元素，将较大的元素逐渐“沉底”。\
-其时间复杂度为 $O(n^2)$，空间复杂度为 $O(1)$ (在原数组上操作，仅使用常数级别的额外空间)。\
+其时间复杂度为 $O(n^2)$，空间复杂度为 $O(1)$ (在原数组上操作，仅使用常数级别的额外空间)。
 
 ```python
 def bubble_sort(arr):
@@ -104,10 +104,10 @@ def merge(left, right):
 
 其时间复杂度可以通过迭代法求解：
 $$
-T(n) = 2T(n/2) + O(n) \\
-T(n) = 2(2T(n/4) + O(n/2)) + O(n) = 4T(n/4) + 2O(n) \\
-T(n) = 4(2T(n/8) + O(n/4)) + 3O(n) = 8T(n/8) + 3O(n) \\
-\cdots \\
+T(n) = 2T(n/2) + O(n) \\\\
+T(n) = 2(2T(n/4) + O(n/2)) + O(n) = 4T(n/4) + 2O(n) \\\\
+T(n) = 4(2T(n/8) + O(n/4)) + 3O(n) = 8T(n/8) + 3O(n) \\\\
+\cdots \\\\
 T(n) = 2^kT(n/2^k) + kO(n)
 $$
 当 $n/2^k = 1$ 时，$k = \log n$，原式变为：
@@ -185,6 +185,41 @@ def binary_search(arr, target):
 ```
 
 # String Matching
+
+## Searching / Brute Force
+
+通常而言，对于字符串匹配，最容易想到的无疑是暴力遍历整个字符串，逐个字符比较直到找到目标串。
+
+```python
+def brute_force(pattern, text):
+    m, n = len(pattern), len(text)
+    for i in range(n - m + 1):
+        j = 0
+        while j < m and text[i + j] == pattern[j]:
+            j += 1
+        if j == m:
+            return i
+    return -1
+```
+
+## Alignment / Longest Common Subsequence
+
+对于两个字符串的匹配，可以通过动态规划的方法求解最长公共子序列。这里对子序列的定义不要求连续。\
+其基本思想是通过构建一个二维数组，记录两个字符串的匹配情况，然后根据匹配情况进行回溯，找到最长的匹配子序列。\
+其时间复杂度为 $O(mn)$，空间复杂度为 $O(mn)$。
+
+```python
+def lcs(text1, text2):
+    m, n = len(text1), len(text2)
+    dp = [[0] * (n + 1) for _ in range(m + 1)]  # dp[i][j] 表示 text1 到 i 为止和 text2 到 j 为止的最长公共子序列的长度
+    for i in range(1, m + 1):
+        for j in range(1, n + 1):
+            if text1[i - 1] == text2[j - 1]:
+                dp[i][j] = dp[i - 1][j - 1] + 1
+            else:
+                dp[i][j] = max(dp[i - 1][j], dp[i][j - 1])
+    return dp[m][n]
+```
 
 ## Horspool Algorithm
 
