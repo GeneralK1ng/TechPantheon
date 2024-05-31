@@ -1,5 +1,7 @@
 <h1 align="center">CPT 102</h1>
 
+<h6 align="center">Produced by AYPatrL04</h6>
+
 <h6>下文使用的 E, T, K, V 等指代泛型，为约定俗成的表示，分别代表 Element, Type, Key, Value 等。使用时替换为具体实现了 Comparable 接口的类型。</h6>
 
 ## Comparable & Comparator 比较器
@@ -242,6 +244,66 @@ TreeMap的查询、插入、删除操作的时间复杂度均为$O(logn)$。
 Queue是一种先进先出（FIFO）的数据结构，其常用方法有`offer()`（添加元素到队尾）、`poll()`（移除并返回队首元素）、`peek()`（返回队首元素但不移除）等。
 
 Stack是一种后进先出（LIFO）的数据结构，其常用方法有`push()`（添加元素到栈顶）、`pop()`（移除并返回栈顶元素）、`peek()`（返回栈顶元素但不移除）等。
+
+## 用栈实现后缀表达式的计算和与中缀表达式的互相转换
+
+后缀表达式（逆波兰表达式）是一种不需要括号来标识优先级的表达式，其计算过程是从左到右遍历表达式，遇到操作数则入栈，遇到操作符则从栈中弹出相应数量的操作数进行计算，将结果再次入栈，直到遍历完整个表达式。
+
+中缀表达式是我们通常使用的表达式，其计算过程需要考虑操作符的优先级和括号的影响。
+
+我们可以通过栈来实现后缀表达式的计算和中缀表达式的互相转换。
+
+```java
+// 后缀表达式的计算
+public double evalRPN(String[] tokens) {
+    Stack<Double> stack = new Stack<>();
+    for (String token : tokens) {
+        if (token.equals("+")) stack.push(stack.pop() + stack.pop());
+        else if (token.equals("-")) stack.push(-stack.pop() + stack.pop());
+        else if (token.equals("*")) stack.push(stack.pop() * stack.pop());
+        else if (token.equals("/")) stack.push(1 / stack.pop() * stack.pop());
+        else stack.push(Double.parseDouble(token));
+    }
+    return stack.pop();
+}
+
+// 中缀表达式转后缀表达式
+public String infixToPostfix(String infix) {
+    StringBuilder postfix = new StringBuilder();
+    Stack<Character> stack = new Stack<>();
+    for (char c : infix.toCharArray()) {
+        if (Character.isDigit(c)) postfix.append(c);
+        else if (c == '(') stack.push(c);
+        else if (c == ')') {
+            while (!stack.isEmpty() && stack.peek() != '(') postfix.append(stack.pop());
+            stack.pop();
+        } else {
+            while (!stack.isEmpty() && priority(c) <= priority(stack.peek())) postfix.append(stack.pop());
+            stack.push(c);
+        }
+    }
+    while (!stack.isEmpty()) postfix.append(stack.pop());
+    return postfix.toString();
+}
+private int priority(char c) {
+    if (c == '+' || c == '-') return 1;
+    if (c == '*' || c == '/') return 2;
+    return 0;
+}
+
+// 后缀表达式转中缀表达式
+public String postfixToInfix(String postfix) {
+    Stack<String> stack = new Stack<>();
+    for (char c : postfix.toCharArray()) {
+        if (Character.isDigit(c)) stack.push(String.valueOf(c));
+        else {
+            String b = stack.pop(), a = stack.pop();
+            stack.push("(" + a + c + b + ")");
+        }
+    }
+    return stack.pop();
+}
+```
 
 # Heap
 
