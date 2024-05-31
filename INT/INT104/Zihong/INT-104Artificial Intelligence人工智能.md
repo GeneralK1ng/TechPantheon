@@ -101,17 +101,17 @@ print("newitem sum:", sum(newitem))  # 18
 
 ## 2.2 Data Collection
 
-![](./Untitled 1.png)
+![](./Untitled1.png)
 
 ## 2.3 Data Storage and Presentation
 
 ### 2.3.1 CSV (Comma Separated Values)
 
-![](./Untitled 2.png)
+![](./Untitled2.png)
 
 ### 2.3.2 TSV (Tab Separated Values)
 
-![](./Untitled 3.png)
+![](./Untitled3.png)
 
 ### 2.3.3 XML (Extensible Markup Language)
 
@@ -120,29 +120,29 @@ print("newitem sum:", sum(newitem))  # 18
     - 这些标签用于标识数据的结构和含义。
     - 与HTML不同，XML没有预定义的标签，而是允许用户根据自己的需求定义标签。这使得XML非常灵活，适用于各种不同的应用场景。
 
-![](./Untitled 4.png)
+![](./Untitled4.png)
 
 ### 2.3.4 JSON (JavaScript Object Notation)
 
-![](./Untitled 5.png)
+![](./Untitled5.png)
 
 ## 2.4 Data Visualization
 
-![](./Untitled 6.png)
+![](./Untitled6.png)
 
 ## 2.5 Data Pre-processing
 
 - Data cleaning
 
-![](./Untitled 7.png)
+![](./Untitled7.png)
 
 - Data Integration 数据整合
 
-![](./Untitled 8.png)
+![](./Untitled8.png)
 
 - Data transformation
 
-![](./Untitled 9.png)
+![](./Untitled9.png)
 
 - Data reduction
 
@@ -169,7 +169,7 @@ Data reduction is a key process in which a reduced representation of a dataset t
 
 Correlation is a statistical analysis that is used to measure and describe the strength and direction of the relationship between two variables.
 
-![](./Untitled 10.png)
+![](./Untitled10.png)
 
 ## 2.8 Feature Extraction 特征提取
 
@@ -208,7 +208,7 @@ PCA identifies the axis that accounts for the largest amount of variance in the 
 4. **选择主成分**：根据特征值的大小，选择前k个特征值对应的特征向量作为主成分。通常，可以根据特征值的大小来确定保留的主成分数量，以保留足够的数据信息。
 5. **投影数据**：最后，将原始数据投影到选定的主成分上，得到降维后的数据集。
 
-![](./Untitled 11.png)
+![](./Untitled11.png)
 
 C1 投影的效果更好
 
@@ -244,7 +244,7 @@ LLE (Locally Linear Embedding) 是一种强大的非线性降维技术，它属�
 
 ## 3.4 Other Dimensionality Reduction Techniques
 
-![](./Untitled 12.png)
+![](./Untitled12.png)
 
 # WEEK4  Naïve Bayes 朴素贝叶斯
 
@@ -256,9 +256,9 @@ Bayes' Rule is a fundamental concept in probability theory that relates the post
 
 The formula for Bayes' Rule is: $P(c|x) = \frac{P(c) \times P(x|c)}{P(x)}$ 
 
-![](./Untitled 13.png)
+![](./Untitled13.png)
 
-![](./Untitled 14.png)
+![](./Untitled14.png)
 
 **专有名词：**
 
@@ -279,15 +279,15 @@ We want to maximise the posterior probability of observations
 
 ## 例题
 
-![](./Untitled 15.png)
+![](./Untitled15.png)
 
-![](./Untitled 16.png)
+![](./Untitled16.png)
 
-![](./Untitled 17.png)
+![](./Untitled17.png)
 
-![](./Untitled 18.png)
+![](./Untitled18.png)
 
-![](./Untitled 19.png)
+![](./Untitled19.png)
 
 注意正比于，所以下面的就不用去计算了
 
@@ -331,7 +331,7 @@ Train/Test split:
 We can split the entire dataset into train and test sets (e,g. 70% for training, 30% for testing). However, the generalization performance of a machine learning method relates to its prediction capability on independent test sets
 
 
-![](./Untitled 20.png)
+![](./Untitled20.png)
 
 ### Cross Validation 交叉验证
 
@@ -340,12 +340,12 @@ Train/test/validation split
 To avoid selecting the parameters that perform best on the test data but maybe not the parameters that generalize best, we can further split the training set into training fold and validation fold
 
 
-![](./Untitled 21.png)
+![](./Untitled21.png)
 
 ### **K-fold Cross-Validation k折交叉测试集进行验证**
 
 
-![](./Untitled 22.png)
+![](./Untitled22.png)
 
 将数据划分为k个互斥且大小相等的子集，
 
@@ -368,7 +368,7 @@ When performing classification or predictions, there are four types of outcomes 
 - **False Negatives (FN)**: Predict an observation does not belong to a class and it actually does belong to that class
 
 
-![](./Untitled 23.png)
+![](./Untitled23.png)
 
 **Recall**（Sensitivity): 所有实际为正的个体中分类为正的比例
 
@@ -377,7 +377,7 @@ When performing classification or predictions, there are four types of outcomes 
 ### Trade off between precision and recall
 
 
-![](./Untitled 24.png)
+![](./Untitled24.png)
 
 - With precision - make sure what you’re saying is positive is actually positive
 - With recall - make sure you’re not missing out on positive observations
@@ -394,7 +394,7 @@ Harmonic mean of precision and recall
 - Typically precision & recall are similar
 
 
-![](./Untitled 25.png)
+![](./Untitled25.png)
 
 Depends on the situation
 
@@ -411,7 +411,7 @@ A ROC curve (receiver operating characteristic curve) is a graph showing the per
 In another word, it presents **Recall (True Positive Rate) VS FPR ( False Positive Rate )**
 
 
-![](./Untitled 26.png)
+![](./Untitled26.png)
 
 The ROC graph summarizes all of the confusion matrices that each threshold produced
 
@@ -419,7 +419,7 @@ The ROC graph summarizes all of the confusion matrices that each threshold produ
 
 AUC ranges in value from 0 to 1. A model whose predictions are 100% wrong has an AUC of 0; one whose predictions are 100% correct has an AUC of 1.
 
-![](./Untitled 27.png)
+![](./Untitled27.png)
 
 ## Multiclass Classification
 
@@ -440,15 +440,15 @@ Regression attempts to determine the strength and character of the relationship 
 
 - 回归试图确定一个因变量（通常用 Y 表示）与一系列其他变量（称为自变量）之间关系的强度和特征。
 
-![](./Untitled 28.png)
+![](./Untitled28.png)
 
 ### Simple Linear Regression
 
-![](./Untitled 29.png)
+![](./Untitled29.png)
 
 The difference between the fitted value ( predicted value) and real value is known as **residuals 残差。**
 
-![](./Untitled 30.png)
+![](./Untitled30.png)
 
 ### Linear Regression
 
@@ -456,11 +456,11 @@ The difference between the fitted value ( predicted value) and real value is kno
 
 - 线性模型通过简单地计算输入特征的加权和加上称为偏差项（也称为截距项）的常数来进行预测
 
-![](./Untitled 31.png)
+![](./Untitled31.png)
 
 **Cost function:** Mean Squared error (MSE) for a Linear Regression model
 
-![](./Untitled 32.png)
+![](./Untitled32.png)
 
 **Training the model is the process to find the value of $\theta$ that minimizes the cost function.**
 
@@ -468,11 +468,11 @@ The difference between the fitted value ( predicted value) and real value is kno
 
 Minimize the Mean Squared error (MSE) cost function:
 
-![](./Untitled 33.png)
+![](./Untitled33.png)
 
 **Local minimum and Plateau 局部极小值和高原**
 
-![](./Untitled 34.png)
+![](./Untitled34.png)
 
 The MSE cost function for a Linear Regression model is continuous and convex function.
 
@@ -495,7 +495,7 @@ Gradient Descent is guaranteed to approach arbitrarily close the global minimum.
 
 ### Polynomial Regression
 
-![](./Untitled 35.png)
+![](./Untitled35.png)
 
 If you perform high-degree Polynomial Regression, you will likely fit the training data much better than with plain Linear Regression. (Is high-degree polynomial always better?)
 
@@ -509,7 +509,7 @@ If you perform high-degree Polynomial Regression, you will likely fit the traini
 
 ### Learning Curves 学习曲线
 
-![](./Untitled 36.png)
+![](./Untitled36.png)
 
 ## Regularized Linear Models
 
@@ -519,13 +519,13 @@ If you perform high-degree Polynomial Regression, you will likely fit the traini
 
 Cost function:
 
-![](./Untitled 37.png)
+![](./Untitled37.png)
 
 This forces the learning algorithm to not only fit the data but also keep the model weights as small as possible. 
 
 - 加上一个惩罚项，该惩罚项正比于模型权重的平方和，即L2范数。这个惩罚项控制模型的复杂度，使得模型权重尽量小，从而防止过拟合。
 
-![](./Untitled 38.png)
+![](./Untitled38.png)
 
 通过调节𝛼的值，可以控制模型对于拟合训练数据和**保持模型简单性**之间的平衡。
 
@@ -537,9 +537,9 @@ This forces the learning algorithm to not only fit the data but also keep the mo
 
 Cost function:
 
-![](./Untitled 39.png)
+![](./Untitled39.png)
 
-![](./Untitled 40.png)
+![](./Untitled40.png)
 
 Lasso Regression automatically performs feature selection and outputs a sparse mode
 
@@ -556,7 +556,7 @@ It is a middle ground between Ridge Regression and Lasso Regression.
 
 Cost function:
 
-![](./Untitled 41.png)
+![](./Untitled41.png)
 
 - 当𝑟=0时，弹性网络退化为脊回归；
 - 当𝑟=1时，弹性网络退化为套索回归。
@@ -566,7 +566,7 @@ Cost function:
 
 To stop training as soon as the validation error reaches a minimum.
 
-![](./Untitled 42.png)
+![](./Untitled42.png)
 
 ## Logistic Regression
 
@@ -576,11 +576,11 @@ Logistic Regression is commonly used to **estimate the probability** that an ins
     - 它通过逻辑函数（也称为sigmoid函数）来估计实例属于某个类别的概率。
     - 逻辑回归的输出是一个介于0和1之间的概率分数，可以用来做出二元决策
 
-![](./Untitled 43.png)
+![](./Untitled43.png)
 
 ### Softmax Regression: for Multinomial Logistic Regression
 
-![](./Untitled 44.png)
+![](./Untitled44.png)
 
 # Week 6 Support Vector Machine
 
@@ -619,13 +619,13 @@ The decision boundary could be much better if the feature is scaled
     - The data must be linearly separable 数据必须是线性可分的
     - Sensitive to outliers 对异常值敏感
 
-![](./Untitled 45.png)
+![](./Untitled45.png)
 
 **软间隔支持向量机（Soft Margin SVM）**
 
 - 是支持向量机（SVM）的一种变体，用于处理线性不可分的情况。与硬间隔支持向量机（Hard Margin SVM）只能处理严格线性可分的数据集不同，软间隔SVM允许在一定程度上容忍一些数据点的分类错误，以获得更好的泛化性能。
 
-![](./Untitled 46.png)
+![](./Untitled46.png)
 
 *C* 是正则化参数，用于平衡间隔的最大化和误分类的惩罚。
 
@@ -633,7 +633,7 @@ The decision boundary could be much better if the feature is scaled
     - A low value of C leads to more margin violations
     - A high value of C limits the flexibility
 
-![](./Untitled 47.png)
+![](./Untitled47.png)
 
 ### Non-Linear SVM Classification
 
@@ -668,7 +668,7 @@ The decision boundary could be much better if the feature is scaled
     - Trick:
         - Compute dot-product between training samples in the projected high-dimensional space without ever projecting. 计算投影高维空间中训练样本之间的点积，无需投影
 
-![](./Untitled 48.png)
+![](./Untitled48.png)
 
 ### SVM Regression
 
@@ -676,7 +676,7 @@ SVM algorithm is versatile: Classification & Regression
 
 Linear and nonlinear regression
 
-![](./Untitled 49.png)
+![](./Untitled49.png)
 
 # Week 7 Decision Trees and Random Forests
 
@@ -699,13 +699,13 @@ Which attribute provides better separating? Why？
 
 **Entropy** measures the degree of randomness in data
 
-![](./Untitled 50.png)
+![](./Untitled50.png)
 
 - ***Lower entropy implies greater predictability!***
     - 较低的熵意味着更高的可预测性！
 - For a set of samples $X$ with $k$ classes:
     
-![](./Untitled 51.png)
+![](./Untitled51.png)
     
     - where $p_i$  is the proportion of elements of class $i$
 
@@ -713,7 +713,7 @@ The information gain of an attribute a is the expected reduction in entropy due 
 
 - 属性 a 的信息增益是由于对 a 的值进行分割而导致的预期熵减少
 
-![](./Untitled 52.png)
+![](./Untitled52.png)
 
 where $X_v$  is the subset of $X$  for which $a = v$
 
@@ -731,7 +731,7 @@ where $X_v$  is the subset of $X$  for which $a = v$
 
 **Best attribute = lowest Gini impurity**
 
-![](./Untitled 53.png)
+![](./Untitled53.png)
 
 
 ### CART Algorithm（分类和回归树）
@@ -742,11 +742,11 @@ Splits the training set into two subsets using a single feature ($k$) and a thre
 
 - **单个特征** ($*k*$) 和 阈值 ($t_k$)：通过选择一个特征 $*k$*  和相应的阈值 $t_k$，将数据集切分成两个子集。目标是找到能够最小化代价函数（不纯度或均方误差）的最佳特征和阈值组合。
 
-![](./Untitled 54.png)
+![](./Untitled54.png)
 
 ### Regularization
 
-![](./Untitled 55.png)
+![](./Untitled55.png)
 
 - Decision trees produce non-linear decision boundaries
     - 决策树产生非线性决策边界
@@ -755,7 +755,7 @@ Splits the training set into two subsets using a single feature ($k$) and a thre
 
 **Ensemble : A group of predictors**
 
-![](./Untitled 56.png)
+![](./Untitled56.png)
 ### Bagging and Pasting/Random Subspace
 
 Training with different subsets of data
@@ -792,7 +792,7 @@ Boosting: train models iteratively, while making the current model focus on the 
 
 ### Stacking
 
-![](./Untitled 57.png)
+![](./Untitled57.png)
 - Stacking通过**组合多个不同类型的模型**来提高整体预测性能。
 - 它的基本思路是使用基学习器生成一级预测结果，然后用次级学习器将这些预测结果组合起来
 - 尽管Stacking的计算复杂性较高，但在处理复杂任务时，通常能显著提高模型的预测性能。
@@ -801,7 +801,7 @@ Boosting: train models iteratively, while making the current model focus on the 
 
 ## K-Means
 
-![](./Untitled 58.png)
+![](./Untitled58.png)
 **Supervised learning**
 
 - The correct labels for each training example are known
@@ -827,14 +827,14 @@ Goal: Assign all data points to 2（n） clusters
 4. **迭代**:
     - 重复步骤2和步骤3，直到质心位置不再变化。
 
-![](./Untitled 59.png)
+![](./Untitled59.png)
 注意 city block distance 计算方法
 
 ### Silhouette Coefficient 轮廓系数
 
 **silhouette coefficient** Measures the tightness of clusters and separation between clusters：
 
-![](./Untitled 60.png)
+![](./Untitled60.png)
 
 where:
 
@@ -847,7 +847,7 @@ where:
     - 轮廓系数的值在-1到1之间，其中1表示聚类效果非常好，0表示聚类质量较差，而负值表示可能存在错误的聚类分配。
 - 通过计算轮廓系数，可以帮助我们评估和改进聚类算法的性能。
 
-![](./Untitled 61.png)
+![](./Untitled61.png)
 
 ### K-means: pros and cons
 
@@ -874,7 +874,7 @@ There are two strategies for building the hierarchy of clusters:
 
 **Idea:** make sure nearby data points end up in the same cluster
 
-![](./Untitled 62.png)
+![](./Untitled62.png)
 
 Distance options:
 
@@ -885,7 +885,7 @@ maximum distance between samples in sub-clusters
 - **average linkage (average of all pairs) :**
 average distance between each pair of samples in subclusters
 
-![](./Untitled 63.png)
+![](./Untitled63.png)
 
 ### Hierarchical clustering: pros and cons
 
@@ -907,7 +907,7 @@ DBSCAN  - (Density-based spatial clustering of applications with noise )
 
 - e.g. number of densely connected points
 
-![](./Untitled 64.png)
+![](./Untitled64.png)
 
 ### DBSCAN pros and cons
 
@@ -939,11 +939,11 @@ So:
 
 ## Gaussian (Normal) distribution
 
-![](./Untitled 65.png)
+![](./Untitled65.png)
 
 ## Maximum Likelihood Estimation (MLE)
 
-![](./Untitled 66.png)
+![](./Untitled66.png)
 
 # KNN
 
