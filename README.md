@@ -4,12 +4,19 @@
 
 ## 现阶段任务
 
-我们当前的任务是集中精力进行期末考试的复习，并以每门课程为单位，按照个人的进度进行笔记整理。我们有以下四门课程：
+我们的任务是集中精力进行期末考试的复习，并以每门课程为单位，按照个人的进度进行笔记整理。课程如下：
 
+### Y2S1：
 1. **CPT101 - Computer Systems**
 2. **CPT103 - Introduction to Databases**
 3. **CPT107 - Discrete Mathematics and Statistics**
 4. **CPT111 - Java Programming**
+
+### Y2S2：
+1. **CPT102 - Data Structures**
+2. **CPT104 - Operating Systems Concepts**
+3. **INT102 - Algorithmic Foundations and Problem Solving**
+4. **INT104 - Artificial Intelligence**
 
 每位成员将按照个人的复习进度，对相应的课程进行笔记整理。我们鼓励大家注重深度理解和掌握知识，以便最终能够为整个社群提供高质量的综合学习材料。
 
@@ -24,7 +31,7 @@
 ## 文件目录（目前）
 
 ```markdown
-|------ CPT
+|------ CPT/INT
     |------ 课程编号
         |
         |----- Person1/
