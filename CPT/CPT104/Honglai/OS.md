@@ -46,7 +46,7 @@
 2. **就绪态（Ready）：** 进程具备运行条件，但等待系统分配CPU资源以便运行。一旦获得CPU时间片，就可以立即执行。
 3. **阻塞态/等待态（Blocked/Waiting）：** 进程不具备运行条件，正等待某个事件的完成。例如，等待输入输出完成、等待资源的释放等。在等待期间，进程暂停执行，直到所等待的事件发生，才能转移到就绪态继续执行。
 
-![](F:/project/TechPantheon/CPT/CPT104/Honglai/img/Three-State%20Schematic.png)
+![](./img/Three-State%20Schematic.png)
 
 在计算机系统中，多个进程并发执行，而这种并发性在宏观层面上意味着它们可以同时运行。然而，在微观层面上，每个进程实际上以一种交替的方式运行，即它们共享CPU资源。为了实现公平调度和资源利用，操作系统将CPU时间划分为一小段一小段的时间片，轮流分配给各个进程。
 
@@ -61,7 +61,7 @@
 - **新建态**（new）：进程正在被创建时的状态
 - **终止态**（exit）：进程正在从系统中消失时的状态
 
-![](F:/project/TechPantheon/CPT/CPT104/Honglai/img/Five-State%20Schematic.png)
+![](./img/Five-State%20Schematic.png)
 
 观察上图，我们可以明显看到只有就绪态和运行态之间存在相互转换的关系，而其它状态之间都是单向转换的。这意味着进程在生命周期中，主要经历了从新建到就绪、运行、阻塞、终止的顺序。
 
@@ -968,12 +968,12 @@ The permanent blocking of a set of processes that either compete for system reso
   - **Partitioning**: 将磁盘分成由一个或多个柱面组成的扇区, 逻辑格式化
 - **Disk Attachment**: IO(Host-attached, local), Network(Storage Area Network, Network Attached Storage)
 - **Disk Scheduling**: 
-  - **FCFS**: First Come First Serve, 先到先服务
-  - **SSTF**: Shortest Seek Time First, 最短寻道时间优先
-  - **SCAN**: Elevator Algorithm, 从一侧顶部到另一侧顶部, 然后返回, 两趟均处理请求
-  - **C-SCAN**: Circular SCAN, 从一侧顶部到另一侧顶部, 然后返回, 只有返回时处理请求
-  - **LOOK**: SCAN 的变种, 不到最边缘, 而是到最后一个请求的位置
-  - **C-LOOK**: C-SCAN 的变种, 不到最边缘, 而是到最后一个请求的位置
+  - **FCFS**: First Come First Serve, 先到先服务 ![](../DiskScheduling/fcfs.png)
+  - **SSTF**: Shortest Seek Time First, 最短寻道时间优先 ![](../DiskScheduling/sstf.png)
+  - **SCAN**: Elevator Algorithm, 从一侧顶部到另一侧顶部, 然后返回, 两趟均处理请求 ![](../DiskScheduling/scan.png)
+  - **C-SCAN**: Circular SCAN, 从一侧顶部到另一侧顶部, 然后返回, 只有返回时处理请求 ![](../DiskScheduling/cscan.png)
+  - **LOOK**: SCAN 的变种, 不到最边缘, 而是到最后一个请求的位置 ![](../DiskScheduling/look.png)
+  - **C-LOOK**: C-SCAN 的变种, 不到最边缘, 而是到最后一个请求的位置 ![](../DiskScheduling/clook.png)
 - **Boot Block**: 存储在 ROM 中, 用于引导操作系统加载, 负责找到磁盘上的操作系统内核并将其加载到内存中进行执行(Bootstrap Loader)
 - **Swap-Space**: 用于存储内存中暂时不用的数据, 以便腾出内存空间给其他程序使用
   - **Swap-Space Management**: 
