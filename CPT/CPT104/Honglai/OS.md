@@ -1,7 +1,3 @@
-[toc]
-
-
-
 写在最前，感谢我们的李哥和我一起通宵写出的这份不够完美的资料，非常感谢。
 
 # 前言
@@ -139,6 +135,69 @@ PCB是进程存在的**唯一标识**，它是操作系统用来记录和描述�
 操作系统需要为当前正在执行的进程保存一些寄存器的值，并且为即将执行的进程恢复一些该进程上一次中断后的寄存器的值，这样一来对于每个进程来说是无感的，这里比较抽象，因为对于每个进程本身来说，就好像一次无感的时间停止，它的程序还在正常运转，只不过他不知道刚刚他被中断并且让另一个进程享用了它心爱的CPU。这又何尝不是一种NTR？
 
 说人话，中断发生时，操作系统保存一些被中断程序的环境（寄存器的值或者一些堆栈信息），然后加载另一个即将运行的进程的环境。就是这样，这就叫上下文切换。你校考试不可能再考的深了。
+
+### 进程管理的五个主要活动
+
+1. **Process Creation and Termination**
+2. **Process Scheduling**
+3. **Process Synchronization**
+4. **Inter-process Communication (IPC)**
+5. **Deadlock Handling**
+
+### 进程间通信（Inter-process Communication）
+
+- INDEPENDENT PROCESSES - neither affect other processes or be affected by other processes.
+- COOPERATING PROCESSES - can affect or be affected by other processes.
+
+#### 允许合作的原因
+
+- Information Sharing - processes which need access to the same file for example.
+- Computation speedup - a problem can be solved faster if the problem can be broken down into sub-tasks to be solved simultaneously.
+- Modularity - break a system down into cooperating modules. (e.g. databases with a client-server architecture.)
+- Convenience - even a single user may be multi-tasking, such as editing, compiling, printing, and running the same code in different windows.
+
+#### 通信模型
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606163020.png)
+
+##### Message-Passing Systems
+
+- communication takes place by way of messages exchanged among the cooperating processes.
+- A message-passing facility provides at least two operations:
+  - send(message)
+  - receive(message)
+- The message size is either fixed or variable
+- If processes P and Q want to communicate: a communication link must exist between them.
+- Are several methods for logically implementing a link and the send()/receive() operations:
+  - Direct and indirect communication
+  - Synchronous and asynchronous communication
+
+##### Shared-Memory Systems
+
+- a region of memory is shared by cooperating processes.
+
+- processes can exchange information by reading and writing all the data to the shared region.
+- Two types of buffers can be used:
+  - unbounded-buffer places no practical limit on the size of the buffer
+  - bounded-buffer assumes that there is a fixed buffer size
+
+#### Direct AND Indirect communication
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606163337.png)
+
+##### Direct Communication
+
+![](F:/project/TechPantheon/CPT/CPT104/Honglai/img/QQ%E6%88%AA%E5%9B%BE20240606163414.png)
+
+##### Indirect Communication
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606163446.png)
+
+#### Synchronous and Asynchronous Message Passing
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606163523.png)
+
+
 
 ## 进程调度
 
@@ -408,6 +467,91 @@ RR调度的诞生是为了另一个衡量标准，也就是**响应时间（resp
 - **Push migration** = a task routinely checks (e.g., every 200ms) the load on each processor. If the workload is unevenly distributed, moves (or push) processes to idle or less busy processor(s).
 
 - **Pull migration** = an idle processor will extract the load from an overloaded processor itself (pulls a waiting task from a busy processor).
+
+## 实时系统调度（RTOS）
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606154647.png)
+
+### RTOS的特点
+
+时间限制有周期（period）和期限（deadline）两种形式。
+
+周期是定期重复任务的迭代之间的时间量。
+
+期限是操作必须完成的最大时限的约束。
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606155329.png)
+
+### RTOS调度中的问题
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606155547.png)
+
+### 三种调度方式
+
+- **Static scheduling.** A schedule is prepared before execution of tasks/processes.
+- **Priority-based scheduling.** The priority assigned to tasks depends on how quickly a task has to respond to the event.
+- **Dynamic scheduling.** There is complete knowledge of tasks set, but new arrivals are not known. Therefore, the schedule changes over the time.
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606160306.png)
+
+### RMS调度
+
+  RMS(Rate Monotonic Scheduling)是一种静态优先级预留式调度算法,通常应用于周期性实时任务的调度。在实时虚拟化技术中,RMS被用于实时虚拟机 (RTVM) 的调度,以确保它们满足时间约束。
+
+RMS 的基本原理是:对于一组周期性任务,将最短周期的任务分配最高优先级,依此类推。具有较短周期的任务将获得较高的优先级。
+
+1. 任务集是周期性的,每个任务在每个周期内都会执行一次。
+2. 任务是独立的,不会被阻塞或相互影响。
+3. 任务的优先级是静态的,在运行时不会改变。
+4. 任务不能被抢占。
+5. 任务的执行时间是已知且确定的。
+
+**advantages**
+
+- Simple and easy to implement
+  Low runtime overhead
+  Guaranteed to satisfy the time constraints of the task set (subject to schedulability conditions)
+  Provides predictable scheduling behaviour
+  However, RMS has some drawbacks.
+
+**disadvantages**
+
+- Not applicable to tasks with dynamic priority or preemption requirements
+  May lead to priority inversion problems
+  Does not guarantee performance under overload conditions
+
+### EDF调度
+
+最早截止时间有限算法（Earliest-Deadline-First Scheduling）
+
+The scheduling criterion is based on the deadline of the processes.
+It can be used for both static and dynamic real-time scheduling.
+The tasks or processes do not need to be periodic.
+Any executing task can be preempted if any other periodic instance with an earlier deadline is ready (dynamic real-time scheduling).
+
+根据 EDF 策略，当一个进程可运行时，它应向系统公布截止期限要求。优先级可能需要进行调整，以便反映新可运行进程的截止期限。注意单调速率调度与 EDF 调度的不同，前者的优先级是固定的。
+
+![](./img/2-1Q10F94245363.gif)
+
+为了说明 EDF 调度，我们再次调度如图 1 所示的进程，这些进程通过单调速率调 度不能满足截止期限要求。记住：进程 P1 有 ρ1 = 50 和 t1 = 25，进程 P2 有 ρ2 = 80 和 t2 = 35，这些进程的 EDF 调度如图 2 所示。
+
+![](./img/2-1Q10G00920436.gif)
+
+
+
+进程 P1 的截止期限为最早，所以它的初始优先级比进程 P2 的要高。当 P1 的 CPU 执行结束时，进程 P2 开始运行。不过，虽然单调速率调度允许 P1 在时间 50（即下一周期开始之际）抢占 P2，但是 EDF 调度允许进程 P2 继续运行。进程 P2 的优先级比 P1 的更高，因为它的下一个截止期限（时间 80）比 P1 的（时间 100）要早。因此，P1 和 P2 都能满足它们的第一个截止期限。
+
+进程 P1 在时间 60 再次开始运行，在时间 85 完成第二个 CPU 执行，也满足第二个截止期限（在时间 100）。这时，进程 P2 开始运行，只是在时间 100 被 P1 抢占。P2 之所以被 P1 抢占是因为 P1 的截止期限（时间 150）要比 P2 的（160）更早。在时间 125，P1 完成 CPU 执行，P2 恢复执行；在时间 145，P2 完成，并满足它的截止期限。然后，系统空闲直到时间 150；在时间 150 进程 P1 开始再次被调度。
+
+与单调速率调度不一样，EDF 调度不要求进程应是周期的，也不要求进程的 CPU 执行的长度是固定的。唯一的要求是，进程在变成可运行时，应宣布它的截止期限。
+
+EDF 调度具有吸引力的地方是，它是理论上最佳的。从理论上说，它可以调度进程，使得每个进程都可以满足截止期限的要求并且 CPU 利用率将会是 100%。然而，在实际中，由于进程的上下文切换和中断处理的代价，这种级别的 CPU 利用率是不可能的。
+
+### 比例份额调度
+
+**比例份额调度（Proportional Share Scheduling）**
+
+![](./img/QQ%E6%88%AA%E5%9B%BE20240606162335.png)
 
 # 内存虚拟化
 
@@ -1278,3 +1422,4 @@ The control of devices connected to the computer, vary in function, speed, and m
   - Use DMA
   - Use smarter hardware devices
   - Balance CPU, memory, bus, and I/O performance for highest throughput
+
