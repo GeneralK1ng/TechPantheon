@@ -135,6 +135,51 @@ def counting_sort(arr):
 
 - 类似的思想参考睡眠排序（
 
+## Quick Sort
+
+<h6>上课没讲，这里对基本实现逻辑稍作说明</h6>
+
+快速排序是一种高效的排序算法，其基本思想是通过选择一个基准值，将数组分为两部分，小于基准值的放在左边，大于基准值的放在右边，然后递归地对左右两部分进行排序。\
+其实现大致如下所示，
+```lua
+Example : arr = [3, 6, 8, 4, 7, 1, 2, 9, 5, 0]
+1. 随便选择一个基准值pivot， 这里选择第一个元素3
+2. 将数组分为两部分，小于3的放在左边，大于3的放在右边
+   pivot = 3, arr = [3, 6, 8, 4, 7, 1, 2, 9, 5, 0] -> [0, 2, 1] 3 [6, 8, 4, 7, 9, 5]
+3. 递归地对左右两部分进行排序
+   左: pivot = 0, [0, 2, 1] -> 0 [2, 1]
+       -> pivot = 2, [2, 1] -> [1] 2
+   右: pivot = 6, [6, 8, 4, 7, 9, 5] -> [5, 4] 6 [8, 7, 9]
+       -> pivot = 5, [5, 4] -> [4] 5
+       -> pivot = 8, [8, 7, 9] -> [7] 8 [9]
+4. 合并左右两部分
+    [0, 1, 2] 3 [4, 5] 6 [7, 8, 9]
+```    
+其时间复杂度为 $O(n \log n)$，空间复杂度为 $O(\log n)$（递归栈深度）。
+
+```python
+def quick_sort(arr, left=0, right=None):
+    if right is None:
+        right = len(arr) - 1
+    if left < right:
+        pivot = partition(arr, left, right)
+        quick_sort(arr, left, pivot - 1)
+        quick_sort(arr, pivot + 1, right)
+    return arr
+
+def partition(arr, left, right):
+    pivot = arr[left]
+    while left < right:
+        while left < right and arr[right] >= pivot:
+            right -= 1
+        arr[left] = arr[right]
+        while left < right and arr[left] <= pivot:
+            left += 1
+        arr[right] = arr[left]
+    arr[left] = pivot
+    return left
+```
+
 # Searching Algorithms
 
 ## Binary Search
