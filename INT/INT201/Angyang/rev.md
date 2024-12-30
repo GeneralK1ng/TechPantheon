@@ -723,15 +723,15 @@ T \to b \\
   - $|s| \geq p$
   - $s \in A$
 - $s$ 可以被分解为**五**个部分 $s = uvxyz$ ，满足
-  - $|vwx| \leq p$
-  - $|vx| > 0$
+  - $|vxy| \leq p$
+  - $|vy| > 0$
   - 对于任意 $i \geq 0$ ，满足 $uv^ixy^iz \in A$
 
 E.g. 证明语言 $A = \{ww | w \in \{0, 1\}^*\}$ 不是上下文无关语言：
 
 1) 假设 $A$ 是上下文无关语言
 2) 提出一个泵长度 $p$ 和一个字符串 $s = 0^p1^p0^p1^p$ ，满足 $|s| \geq p$ 且 $s \in A$
-3) 对于任意 $u, v, w, x, y$ ，满足 $s = uvxyz$ 且 $|vxy| \leq p$ 且 $|vy| > 0$ ，我们可以得到以下三种情况：
+3) 对于任意 $u, v, w, x, y$ ，满足 $s = uvxyz$ 且 $|vxy| \leq p$ 且 $|vy| > 0$ ，我们可以得到以下六种情况：
    - $vxy$ 只包含 $0$ ，即 $vxy = 0^k$ ，则 $uv^2xy^2z = 0^{p+k}1^p0^p1^p \notin A$ 或 $uv^2xy^2z = 0^p1^p0^{p+k}1^p \notin A$
    - $vxy$ 只包含 $1$ ，即 $vxy = 1^k$ ，则 $uv^2xy^2z = 0^p1^{p+k}0^p1^p \notin A$ 或 $uv^2xy^2z = 0^p1^p0^p1^{p+k} \notin A$
    - $vxy$ 包含第一段 $01$ ，即 $vxy = 0^i1^j$ ，则 $uv^2xy^2z = 0^{p+i}1^{p+j}0^p1^p \notin A \text{ for } i \geq 0 , j \geq 0 , i \neq j$
@@ -762,7 +762,7 @@ $$M = (Q, \Sigma, \Gamma, \delta, q_0, q_{\text{accept}}, q_{\text{reject}})$$
 - $Q$ 是一个有限的状态集合，其中 $q_0 \in Q$ 是初始状态， $q_{\text{accept}} \in Q$ 是接受状态， $q_{\text{reject}} \in Q$ 是拒绝状态，且 $q_{\text{accept}} \neq q_{\text{reject}}$ ，三者皆唯一
 - $\delta : Q \times \Gamma \to Q \times \Gamma \times \{L, R, N\}$ 是转移函数，其中 $L$ 表示向左移动， $R$ 表示向右移动， $N$ 表示不移动
 
-例如，对于一个纸带 `abaa` 和一个图灵机，图灵机存在一个状态转移函数 $\delta(q_0, a) = (q_1, b, L)$ ，即在状态 $q_0$ 读取字符 $a$ 时，将字符 $a$ 替换为 $b$ ，并向右移动。
+例如，对于一个纸带 `abaa` 和一个图灵机，图灵机存在一个状态转移函数 $\delta(q_0, a) = (q_1, b, L)$ ，即在状态 $q_0$ 读取字符 $a$ 时，将字符 $a$ 替换为 $b$ ，并向左移动。
 
 当前磁头指向第二个 `a` ，状态为 $q_0$，则：
 
